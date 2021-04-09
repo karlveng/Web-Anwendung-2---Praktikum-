@@ -1,0 +1,68 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    width: 120px;
+}
+
+h1 {
+    float:right;
+    font-family: 'Caveat';
+    font-size: 75px;
+}
+
+li {
+    font-family: 'Poppins';
+    text-decoration: none;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 10%;
+}
+
+.logo li {
+    display: inline-block;
+    list-style: none;
+}
+
+.info {
+    list-style: none;
+}
+
+.info li {
+    display: inline-block;
+    padding: 15px 20px;
+
+}
+
+.button {
+    background-color:#2CCE2E;
+    border: solid;
+    border-color: #2CCE2E;
+    border-radius: 8px;
+    color: white;
+}
+
+.button:hover {
+    background-color: white;
+    border: solid;
+    border-color: #2CCE2E;
+    color: #2CCE2E;
+}
+
+input {
+    padding: 15px;
+    padding-right: 150px;
+    border-radius: 8px;
+}
+
+
+
+
+
