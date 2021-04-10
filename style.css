@@ -11,7 +11,7 @@ img {
 h1 {
     float:right;
     font-family: 'Caveat';
-    font-size: 75px;
+    font-size: 40px;
     color: black;
 }
 
@@ -72,20 +72,22 @@ input {
 main{
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding: 30px 10%;
+    
+    
 }
 
 .kategorieButton{
-    background-color:#2CCE2E;
-    border: solid;
-    border-color: #2CCE2E;
     border-radius: 8px;
-    color: white;
+    color: black;
     padding: 15px 20px;
     font-size: 17px;
     font-family: 'Poppins';
+    background-color: white;
+    border-color: black;
 }
+
+
 
 .dropdown-content li{
     list-style: none;
@@ -98,22 +100,49 @@ main{
     color: black;
 }
 
+.dropdown:hover .kategorieButton{
+    background-color: #E4E7EB;
+    color: black;
+}
+
+
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
 .dropdown-content {
     display: none;
-    background-color:   #f1f1f1;
+    background-color:  #F2E0D4;
     border-radius: 8px;
+
 }
 
 .dropdown-content li:hover{
-    background-color: #C5C7CA;
+    background-color: #2CCE2E;
 }
 
+.dropdown-content li a:hover{
+    color: white;
+}
 
+.kategorieButton img{
+    width: 20px;
+    margin-right: 10px;
+}
 
+.slideshow-container{
+    margin-right: 400px;
+    border-radius: 8px;
+    background-color: #ECD2C2;
+    padding: 20px;
+    padding-bottom: 150px;
+
+}
+
+.slideBild{
+    width: 100%;
+    border-radius: 8px;
+}
 
 
 
