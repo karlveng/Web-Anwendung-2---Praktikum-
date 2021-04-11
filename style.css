@@ -209,3 +209,45 @@ footer a img {
 .Impressum-teil {
     justify-content: center;
 }
+
+.formular-container{
+    font-family: 'Poppins';
+}
+
+.formular-container .überschrift{
+    display:block;
+}
+
+.formular-input input{
+    display: block;
+    width: 500px;
+    margin-top: 10px;
+}
+
+.name{
+    margin-top: 50px;
+    padding-right: 150px;
+}
+
+.zutaten{
+    padding-bottom: 200px;
+    
+}
+
+.list{
+    list-style: none;
+}
+
+.list li{
+    display: inline-block;
+    font-size: 30px;
+}
+
+
+
+
+
+
+
+
+
