@@ -194,3 +194,18 @@ footer a img {
 .Datenschutz-teil {
     justify-content: center;
 }
+
+.Impressum {
+    border-top: solid;
+    padding: 12px 0px;
+    margin-top: 10px;
+}
+
+.Impressum-container {
+    width: 700px;
+    font-family: 'Poppins';
+}
+
+.Impressum-teil {
+    justify-content: center;
+}
