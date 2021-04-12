@@ -72,8 +72,9 @@ input {
 
 main {
     display: flex;
-    justify-content: space-between;
     padding: 30px 10%;
+    justify-content: space-between;
+
 }
 
 .kategorieButton {
@@ -84,6 +85,10 @@ main {
     font-family: 'Poppins';
     background-color: white;
     border-color: black;
+}
+
+.dropdown{
+    position: absolute;
 }
 
 .dropdown-content li {
@@ -125,19 +130,28 @@ main {
     margin-right: 10px;
 }
 
-.slideshow-container {
-    margin-right: 400px;
+.slideshow-container{
+    border: solid;
     border-radius: 8px;
     background-color: #ECD2C2;
-    padding: 20px;
-    padding-bottom: 50px;
+    margin: auto;
     font-family: 'Poppins';
+
 }
 
-.slideBild {
-    width: 100%;
+.mySlidesfade{
+    padding: 12px 20px;
+}
+
+.mySlidesfade img{
     border-radius: 8px;
 }
+
+.text{
+    padding: 12px 20px;
+}
+
+
 
 footer {
     display: flex;
@@ -189,6 +203,7 @@ footer a img {
 .Datenschutz {
     padding: 12px 0px;
     margin-top: 10px;
+    border-top: solid;
 }
 
 .Datenschutz-teil {
@@ -209,3 +224,76 @@ footer a img {
 .Impressum-teil {
     justify-content: center;
 }
+
+.formular-container{
+    text-align: center;
+    font-family: 'Poppins';
+    font-size: 30px;
+}
+
+.formular-container .überschrift{
+    display:block;
+}
+
+.formular-input input{
+    display: block;
+    width: 500px;
+    margin-top: 10px;
+}
+
+.name{
+    margin-top: 50px;
+    padding-right: 150px;
+}
+
+.zutaten{
+    padding-bottom: 200px;
+    
+}
+
+.list{
+    list-style: none;
+}
+
+.list li{
+    display: inline-block;
+    font-size: 30px;
+    margin: 10px;
+}
+
+.fastfood-überschrift{
+    font-size: 40px;
+}
+
+.fastfood-container{
+    border: solid;
+    margin: auto;
+    text-align: center;
+    font-family: 'Poppins';
+}
+
+.item-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 10px;
+    margin: auto;
+  }
+
+  .fastfood-item {
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+    margin: 10px;
+    width: 300px;
+    height: 250px;
+  }
+
+
+
+
+
+
+
