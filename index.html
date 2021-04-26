@@ -1,63 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="mobile.css">
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
+    <!-- styles --> 
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile.css">
     <title>GOOD FOOD MATTERS</title>
 </head>
-
 <body>
+
     <header>
-        <ul class="logo">
-
-            <li>
-                <a href="index.html">
-                    <img src="bilder/healthy-eating.png" alt="healthy-eating">
-                    <h1>GOOD FOOD MATTERS</h1>
-                </a>
-            </li>
-        </ul>
-        <nav>
-
-            <form action="" class="searchbar">
-                <input type="text" placeholder="z.B. Pasta oder Kuchen" name="suche">
+        <div class="logo">
+            <a href="index.html">
+                <img src="bilder/healthy-eating.png" alt="Logo" class="logo-img">
+                <h1>Good Food Matters</h1>
+            </a>
+        </div>
+        <div class="searchbar">
+            <form action="">
+                <input type="text" placeholder="z.B. Pasta oder Kuchen" name="suche" class="searching">
             </form>
-
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="GerichtHinzufügen.html" class="add-button">Gericht hinzufügen</a>
+                </li>
+                <li>
+                    <a href="Ueber Uns.html">Über Uns</a>
+                </li>
+                <li>
+                    <a href="kontakt.html">Kontakt</a>
+                </li>
+            </ul>
         </nav>
-        <ul class="info">
-            <a href="GerichtHinzufügen.html"><li class="button">Gericht hinzufügen</li></a>
-            <a href="Ueber Uns.html"><li class="infoseiten">Über uns</li></a>
-            <a href="kontakt.html"><li class="infoseiten">Kontakt</li></a>    
-        </ul>
-
     </header>
-
     <main>
         <div class="dropdown">
             <button class="kategorieButton"><img src="bilder/speisekarte.png" alt="menü">Kategorien</button>
             <div class="dropdown-content">
-                <li><a href="FastFood.html">Fast Food</a></li>
-                <li><a href="">Kaloriarme Gerichte</a></li>
-                <li><a href="">Fitness Gerichte</a></li>
-                <li><a href="">Einfache Gerichte</a></li>
-                <li><a href="">Desserts</a></li>
-                <li><a href="">Proteininhaltige Gerichte</a></li>
-                <li><a href="">Vegane Gerichte</a></li>
-                <li><a href="">Vegetarische Gerichte</a></li>
+                <a href="FastFood.html"><li>Fast Food</li></a>
+                <a href=""><li>Kaloriarme Gerichte</li></a>
+                <a href=""><li>Fitness Gerichte</li></a>
+                <a href=""><li>Einfache Gerichte</li></a>
+                <a href=""><li>Desserts</li></a>
+                <a href=""><li>Proteininhaltige Gerichte</li></a>
+                <a href=""><li>Vegane Gerichte</li></a>
+                <a href=""><li>Vegetarische Gerichte</li></a>
             </div>
         </div>
-
         <div class="slideshow-container">
             
             <div class="bild-container">
-
+                
                 <div class="mySlidesfade">
+                    
                     <img src="bilder/pizza-gemuese-fisch.jpg" style="width: 100%">
                     <div class="text"> 
                         
@@ -66,30 +68,51 @@
                         Diese Pizza ist nicht nur reichlich belegt mit Lachs und Gemüse, 
                         sondern beinhaltet auch einen saftigen Clou: Der Rand ist mit Mini-Mozzarellas gefüllt!
                         
-                        </div>
+                    </div>
+                    
                 </div>
                 
+                <div class="PrevNext">
+
+                    <div><a class="prev" onclick="">&#10094;</a></div>
+                    <div><a class="next" onclick="">&#10095;</a></div>
+
+
+                </div>
+                
+
+
             </div>
-        
+            
+            
+        </div>
+
+        <div class="klassiker-container">
+            <p style="font-family: 'Poppins'; font-size: 30px; font-weight: bold;">Klassiker</p>
+            <div class="klassiker-bilder">
+                <div class="bild">
+                    <img src="bilder/Currywurst-mit-Pommes-Frites-50d790da142a2.jpg" alt="" style="width: 60%; border-radius: 8px;">
+                    <p class="bild-text">Currywurst</p>
+                </div>
+                <div class="bild">
+                    <img src="bilder/pizza-lollies.jpg" alt="" style="width: 60%; border-radius: 8px">
+                    <p class="bild-text">Pizza Lollie</p>
+                </div>
+                <div class="bild">
+                    <img src="bilder/Pizza-Muscheln-50efddaedf9c0.png" alt="" style="width: 60%; border-radius: 8px">
+                    <p class="bild-text">Pizza Muscheln</p>
+                </div>
+            </div>
         </div>
 
     </main>
-
     <footer>
-
         <a href="Impressum.html">Impressum</a>
         <a href="Datenschutz.html">Datenschutz</a>
         <a href="Nutzungsbedingungen.html">Nutzungsbedingungen</a>
         <a href=""><img src="bilder/facebook.png" alt=""></a>
         <a href=""><img src="bilder/instagram.png" alt=""></a>
         <a href=""><img src="bilder/twitter.png" alt=""></a>
-
-
-
     </footer>
-
-
-
 </body>
-
 </html>

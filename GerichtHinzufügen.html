@@ -1,97 +1,89 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
+    <!-- styles --> 
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile.css">
     <title>GOOD FOOD MATTERS</title>
 </head>
+<body>
 
-<header>
-    <ul class="logo">
-
-        <li>
+    <header>
+        <div class="logo">
             <a href="index.html">
-                <img src="bilder/healthy-eating.png" alt="healthy-eating">
-                <h1>GOOD FOOD MATTERS</h1>
+                <img src="bilder/healthy-eating.png" alt="Logo" class="logo-img">
+                <h1>Good Food Matters</h1>
             </a>
-        </li>
-    </ul>
-    <nav>
-
-        <form action="" class="searchbar">
-            <input type="text" placeholder="z.B. Pasta oder Kuchen" name="suche">
-        </form>
-
-    </nav>
-    <ul class="info">
-        <a href="GerichtHinzufügen.html"><li class="button">Gericht hinzufügen</li></a>
-        <a href="Ueber Uns.html"><li class="infoseiten">Über uns</li></a>
-        <a href="kontakt.html"><li class="infoseiten">Kontakt</li></a>
-    </ul>
-
-</header>
-
-<main class="Überuns-teil">
-    <div class="formular-container">
+        </div>
+        <div class="searchbar">
+            <form action="">
+                <input type="text" placeholder="z.B. Pasta oder Kuchen" name="suche" class="searching">
+            </form>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="GerichtHinzufügen.html" class="add-button">Gericht hinzufügen</a>
+                </li>
+                <li>
+                    <a href="Ueber Uns.html">Über Uns</a>
+                </li>
+                <li>
+                    <a href="kontakt.html">Kontakt</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="formular-container">
         
-                <img src="bilder/kochmutze.png" alt="">
-                <h2>Neues Gericht</h2>
+            <img src="bilder/kochmutze.png" alt="kochmuetze" class="add-recept">
+            <h2>Neues Gericht</h2>
+        
+    
+    <form action="" class="formular-input">
+        <input type="text" class="name" placeholder="Name des Gerichts">
+        <select name="Kategorie" id="Kategorie" >
+            <option value="FastFood">--Kategorie des Gerichts--</option>
+            <option value="FastFood">Kaloriarme Gerichte</option>
+            <option value="FastFood">Fitness Gerichte</option>
+            <option value="FastFood">Einfache Gerichte</option>
+            <option value="FastFood">Desserts</option>
+            <option value="FastFood">Proteininhaltige Gerichte</option>
+            <option value="FastFood">Vegane Gerichte</option>
+            <option value="FastFood">Vegetarische Gerichte</option>
             
+        </select>
+        <input type="text" class="dauer" placeholder="Zubereitungsdauer">
+        <input type="text" class="Zutaten" placeholder="Zutaten">
+        <input type="text" class="zubereitung" placeholder="Zubereitung">
+        <br>
+        <label for="myfile">Bild hinzufügen: </label>
+        <input type="file" id="myfile" name="myfile">
+        <input type="submit" value="Hinzufügen" class="submit-button">
         
-        <form action="" class="formular-input">
-            <input type="text" class="name" placeholder="Name des Gerichts">
-            <input type="text" class="kategorie" placeholder="Kategorie des Gerichts">
-            <input type="text" class="dauer" placeholder="Zubereitungsdauer">
-            <input type="text" class="zutaten" placeholder="Zutaten des Gerichts">
-            <input type="text" class="zutaten" placeholder="Zubereitung des Gerichts">
-            <br>
-            <label for="myfile" class="bild">Bild hinzufügen: </label>
-            <input type="file" id="myfile" name="myfile">
-            <input type="submit" value="Hinzufügen" class="submit-button">
-            
 
 
 
 
-        </form>
-        
-    </div>
+    </form>
+    
+</div>
 
-
-
-</main>
-
-<footer>
-
-    <a href="Impressum.html">Impressum</a>
-    <a href="Datenschutz.html">Datenschutz</a>
-    <a href="Nutzungsbedingungen.html">Nutzungsbedingungen</a>
-    <a href=""><img src="bilder/facebook.png" alt=""></a>
-    <a href=""><img src="bilder/instagram.png" alt=""></a>
-    <a href=""><img src="bilder/twitter.png" alt=""></a>
-
-
-
-</footer>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    </main>
+    <footer>
+        <a href="Impressum.html">Impressum</a>
+        <a href="Datenschutz.html">Datenschutz</a>
+        <a href="Nutzungsbedingungen.html">Nutzungsbedingungen</a>
+        <a href=""><img src="bilder/facebook.png" alt=""></a>
+        <a href=""><img src="bilder/instagram.png" alt=""></a>
+        <a href=""><img src="bilder/twitter.png" alt=""></a>
+    </footer>
+</body>
 </html>
