@@ -1,97 +1,110 @@
-* {
+/* Reset Code */
+/* Setzt die Voreinstellung der Seitenabstände auf 0 */
+*{
+    margin: 0px;
+    padding: 0px;
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 
-
-
-img {
-    width: 120px;
-}
-
-h1 {
-    float: right;
-    font-family: 'Caveat';
-    font-size: 40px;
-    color: black;
-}
-
-li {
-    font-family: 'Poppins';
-    text-decoration: none;
-}
-
-header {
+header{
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
-    padding: 30px 10%;
+    align-content: stretch;
+    width: 80%;
+    height: auto;
+    margin: 30px auto;
 }
 
-
-.logo li {
-    display: inline-block;
+/* order - positioniert die Reihenfolge der Content-Bereiche */
+.logo-img{
+    order: 1;
+    width: 85px;
     list-style: none;
 }
 
-.info {
+h1{
+    float: right;
+    line-height: 85px;
+    font-family: 'Caveat';
+    text-transform: uppercase;
+    color: #000000;
+}
+
+/* Mitte - Search input */
+.searchbar{
+    order: 2;
+}
+
+.searching{
+    padding: 1rem;
+    padding-right: 10rem;
+    width: 100%;
+    border-radius: 8px;
+    text-align: left;
+    outline: none;
+}
+
+/* Navbar */
+nav{
+    order: 3;
+}
+
+nav ul{
+    display: flex;
+    justify-content: space-around;
+}
+
+nav ul li{
     list-style: none;
+    padding: 0rem;
 }
 
-.info li {
-    display: inline-block;
-    padding: 15px 20px;
+nav ul li a{
+    display: block;
+    text-align: center;
+    font-family: 'Poppins';
+    text-decoration: none;
+    color: #000000;
+    padding: 0.75rem 1rem;
 }
 
-.infoseiten {
-    color: black;
-}
-
-.infoseiten:hover {
+nav ul li a:hover{
     text-decoration: underline;
 }
 
-.button {
+.add-button{
     background-color: #2CCE2E;
-    border: solid;
-    border-color: #2CCE2E;
+    border: 1.5px solid #2CCE2E;
+    color: #ffffff;
     border-radius: 8px;
-    color: white;
+    text-decoration: none !important; /* !important setzt die höchste Priorität - überbietet CSS Attribute */
 }
 
-.button:hover {
+nav ul li .add-button:hover{
     background-color: white;
-    border: solid;
-    border-color: #2CCE2E;
     color: #2CCE2E;
 }
 
-input {
-    padding: 15px;
-    padding-right: 150px;
-    border-radius: 8px;
-}
-
-main {
+/* Main */
+main{
     display: flex;
-    padding: 30px 10%;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
-
-}
-
-.kategorieButton {
-    border-radius: 8px;
-    color: black;
-    padding: 15px 20px;
-    font-size: 17px;
-    font-family: 'Poppins';
-    background-color: white;
-    border-color: black;
+    align-items: center;
+    align-content: stretch;
+    width: 80%;
+    height: auto;
+    margin: 30px auto;
 }
 
 .dropdown{
-    position: absolute;
+   position: absolute;
+   top: 17%;
+   font-family: 'Poppins';
 }
 
 .dropdown-content li {
@@ -118,14 +131,29 @@ main {
     display: none;
     background-color: #F2E0D4;
     border-radius: 8px;
+    font-size: 14px;
 }
 
 .dropdown-content li:hover {
     background-color: #2CCE2E;
+    color: white;
 }
 
-.dropdown-content li a:hover {
-    color: white;
+.dropdown-content a{
+    text-decoration: none;
+    color: #000;
+}
+
+
+.kategorieButton{
+    padding: 12px 35px;
+    background-color: transparent;
+    border: none;
+    border: 1.5px solid #000;
+    font-family: 'Poppins';
+    font-size: 16px;
+    border-radius: 8px;
+    outline: none;
 }
 
 .kategorieButton img {
@@ -133,17 +161,17 @@ main {
     margin-right: 10px;
 }
 
+/* Slideshow - Container */
 .slideshow-container{
-    border: solid;
     border-radius: 8px;
     background-color: #ECD2C2;
     margin: auto;
     font-family: 'Poppins';
-
+    width: 45%;
 }
 
 .mySlidesfade{
-    width: 650px;
+    width: 100%;
     padding: 12px 20px;
 }
 
@@ -151,11 +179,63 @@ main {
     border-radius: 8px;
 }
 
-.text{
-    padding: 12px 20px;
+.prev, .next{
+    font-weight: bold;
+    font-size: 50px;
+    background-color: #E4E7EB;
+    margin: 20px;
+    padding: 0px 10px;
+    border-radius: 8px;
+}
+
+.prev:hover, .next:hover{
+    background-color: #CDCED0 ; 
+    cursor: pointer;
+}
+
+.PrevNext{
+    display: flex;
+    justify-content: space-between;
+    border-color: black;
+    width: 100%;
+}
+
+.klassiker-container{
+    padding: 20px;
+    width: 100%;
+    background-color: #E4E7EB;
+    margin-top: 50px;
+    border-radius: 8px;
+    
+}
+
+.klassiker-bilder{
+    display: inline-flex;
+    justify-content: space-between;
+    margin: 30px;
+    border-radius: 8px;
+
+}
+
+.bild {
+    justify-content: center;
+    text-align: center;
+    margin-top: 0px;
+    margin-right: 30px;
+    background-color:#ECD2C2;
+    padding: 20px;
+    width: 30%;
+    border-radius: 8px;
+}
+
+.bild-text{
+    font-family: 'Poppins';
 }
 
 
+.text{
+    padding: 12px 20px;
+}
 
 footer {
     display: flex;
@@ -241,14 +321,28 @@ footer a img {
 
 .formular-input input{
     display: block;
-    width: 500px;
-    margin-top: 10px;
+    padding: 20px;
+    margin: 20px;
+
+}
+
+
+.formular-input select{
+    
+    margin-left: 20px;
+    margin-bottom: 10px;
+    width: 100%;
+    padding:  12px;
+    font-family: 'Poppins';
+    border-radius: 8px;
 }
 
 .formular-input{
     text-align: left;
     font-size: 20px;
 }
+
+
 
 .formular-input .submit-button{
     padding: 20px;
@@ -257,6 +351,8 @@ footer a img {
     color: white;
     border: solid;
 }
+
+
 
 .submit-button:hover{
     background-color: white;
@@ -268,13 +364,8 @@ footer a img {
 
 .name{
     margin-top: 50px;
-    padding-right: 150px;
 }
 
-.zutaten{
-    padding-bottom: 200px;
-    
-}
 
 .list{
     list-style: none;
@@ -323,7 +414,188 @@ footer a img {
     text-decoration: underline;
 }
 
+/* Gericht - Page */
+.formular-container{
+    text-align: center;
+    font-family: 'Poppins';
+    font-size: 30px;
+    display: block;
+    width: 40%;
+    margin: 0 auto;
+}
+
+.formular-container .überschrift{
+    display:block;
+}
+
+h2{
+    font-size: 30px;
+}
+
+.add-recept{
+    width: 175px;
+}
+
+.formular-input{
+    text-align: left;
+    font-size: 20px;
+}
+
+.formular-input input{
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+
+.formular-input label{
+    margin-left: 20px;
+}
+
+.formular-input .submit-button{
+    padding: 20px;
+    font-size: 20px;
+    background-color: #2CCE2E;
+    color: white;
+    border: solid;
+}
+
+.submit-button:hover{
+    background-color: white;
+    color: #2CCE2E;
+    border: solid;
+    border-color: #2CCE2E;
+    cursor: pointer;
+}
+
+.Zutaten{
+    height: 400px;
+}
+
+.zubereitung{
+    height: 300px;
+}
+
+.Zutaten::placeholder{
+    vertical-align: text-top;
+    font-family: 'Poppins';
+}
+
+/* FastFood - Page */
+.food-burger-img{
+    width: 175px;
+}
 
 
+/* Barbecue Burger */
+.barbecue-container{
+    display: grid;
+    grid-template-columns: auto auto ;
+    width:100%;
+    flex-wrap: wrap;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.burger-header{
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+}
+
+.burger-img{
+    width: 65px;
+    float: left;
+}
+
+.burger-header h4{
+        float: left;
+        line-height: 65px;
+        font-family: 'Poppins';
+        margin-left: 30px;
+        font-size: 30px;
+}
 
 
+.slider-burger{
+    width: 100%;
+    height: auto;
+}
+
+.slider-burger p{
+    font-family: 'Poppins';
+    font-size: 25px;
+}
+
+.burger-thumb{
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.push{
+    width: 15rem;
+
+}
+
+
+.left-recept{
+    order: 1;
+    font-family: 'Poppins';
+    line-height: 45px;
+    background-color: #F2F2F2;
+    border-radius: 8px;
+    padding: 10px 10px;
+    height: 30.2rem;
+    overflow: auto;
+    margin-left: 100px;
+    
+}
+
+.left-recept h5{
+    font-size: 30px;
+    font-family: 'Lobster';
+    color: #2CCE2E;
+}
+
+.Zubereitung {
+    order: 2;
+    margin-top: 50px;
+    width: 600px;
+    font-family: 'Poppins';
+}
+
+.Zubereitung h5{
+    font-size: 30px;
+    font-family: 'Lobster';
+    color: #2CCE2E;
+}
+
+/* Impressum - Page */
+.Impressum {
+    border-top: solid;
+    padding: 12px 0px;
+    margin-top: 10px;
+}
+
+.impressum-container{
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    font-family: 'Poppins';
+}
+
+/* Datenschutz - Page */
+.datenschutz-container{
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    font-family: 'Poppins';
+}
+
+/* Kontakt - Page */
+.Überuns-container{
+    display: block;
+    margin: 0 auto;
+}

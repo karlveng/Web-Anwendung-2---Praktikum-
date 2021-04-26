@@ -1,43 +1,111 @@
-@media screen and (max-width: 1200px) {
-    .logo li{
-        display: block;
-        width: 100%;
-    }
-
+@media screen and (max-width: 1500px){
     header{
-        display: block;
+        width: 95%;
+    }
+    .dropdown{
+        left: 3%;
+        top: 35%;
+     }
+}
+
+@media screen and (max-width: 1236px){
+    header{
         width: 100%;
     }
-    
+
     h1{
-        float: left;
+        font-size: 22px;
     }
 
-    img{
-        float: left;
+    .searching{
+        padding-right: 6rem;
     }
 
+    nav ul li{
+        padding: 0.5rem;
+    }
+
+    nav ul li a{
+        padding: 0.5rem 0.75rem;
+    }
+    .dropdown{
+        left: 1%;
+     }
+     .kategorieButton{
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+
+    .item-container{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        margin: 0 auto;
+    }
+
+    .fastfood-item{
+        display: block;
+        margin: 30px auto;
+    }
+
+    .left-recept{
+        width: 25rem;
+        margin-top: 100px;
+    }
+}
+
+@media screen and (max-width: 992px){
+    header{
+        width:100%;
+    }
     .searchbar{
-        float: right;
+        order: 3;
     }
 
-    .button{
-        margin: 50px auto;
-        display: block;
-    }
-
-    .info{
-        width: 100%;
-        display: block;
-        margin: 50px auto;
+    nav{
+       position: absolute;
+        top: 30%;
+        left: 0;
+        right: 0;
     }
 
     .dropdown{
-        top: 12%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-
+        margin-top: 50px;
     }
 
+    .slideshow-container{
+        margin-top: 120px;
+    }
 
+    .impressum-container{
+        margin-top: 100px;
+        width:100%;
+    }
+
+    .datenschutz-container{
+        margin-top: 100px;
+        width:100%;
+    }
+
+    .Überuns-container{
+        margin-top: 100px;
+        width:100%;
+    }
+
+    .formular-container{
+        margin-top: 100px;
+        width:100%;
+    }
+
+    .fastfood-container{
+        margin-top: 100px;
+        width:100%;
+    }
+}
+
+@media screen and (max-width: 567px){
+    .searching{
+        padding-right: 6px;
+    }
 }
