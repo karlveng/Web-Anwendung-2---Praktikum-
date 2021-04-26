@@ -4,6 +4,8 @@
     padding: 0;
 }
 
+
+
 img {
     width: 120px;
 }
@@ -26,6 +28,7 @@ header {
     align-items: center;
     padding: 30px 10%;
 }
+
 
 .logo li {
     display: inline-block;
@@ -140,6 +143,7 @@ main {
 }
 
 .mySlidesfade{
+    width: 650px;
     padding: 12px 20px;
 }
 
@@ -241,6 +245,27 @@ footer a img {
     margin-top: 10px;
 }
 
+.formular-input{
+    text-align: left;
+    font-size: 20px;
+}
+
+.formular-input .submit-button{
+    padding: 20px;
+    font-size: 20px;
+    background-color: #2CCE2E;
+    color: white;
+    border: solid;
+}
+
+.submit-button:hover{
+    background-color: white;
+    color: #2CCE2E;
+    border: solid;
+    border-color: #2CCE2E;
+}
+
+
 .name{
     margin-top: 50px;
     padding-right: 150px;
@@ -266,7 +291,6 @@ footer a img {
 }
 
 .fastfood-container{
-    border: solid;
     margin: auto;
     text-align: center;
     font-family: 'Poppins';
@@ -274,24 +298,30 @@ footer a img {
 
 .item-container {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: auto auto auto;
     padding: 10px;
     margin: auto;
   }
 
   .fastfood-item {
-    background-color: white;
-    border: 1px solid rgba(0, 0, 0, 0.8);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgba(214, 214, 214, 0.8);
     border-radius: 8px;
-    padding: 20px;
     font-size: 30px;
     text-align: center;
-    margin: 10px;
-    width: 300px;
-    height: 250px;
+    margin: 20px;
+    width: 200px;
+    
   }
 
+.fastfood-item a{
+    text-decoration: none;
+    color: black;
+}
 
+.fastfood-item a:hover{
+    text-decoration: underline;
+}
 
 
 
