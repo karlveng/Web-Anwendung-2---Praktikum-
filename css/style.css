@@ -414,7 +414,7 @@ footer a img {
     text-decoration: underline;
 }
 
-/* Gericht - Page */
+/* GerichtHinzufügen - Page */
 .formular-container{
     text-align: center;
     font-family: 'Poppins';
@@ -468,18 +468,78 @@ h2{
     cursor: pointer;
 }
 
-.Zutaten{
-    height: 400px;
+.zutatenblock{
+    border: solid;
+    margin-left: 20px;
+    width: 100%;
+    display: block;
+    
 }
+
+.zutatenblock .Zutaten{
+    width: 50%;
+    margin-left: 0;
+}
+
+.zutatenblock .Menge{
+    width: 12%;
+    margin-left: 0;
+}
+
+.zutatenblock .einheiten{
+    width: 13%;
+    height: 58px;
+    margin-left: 0;
+    margin-top: 10px;
+
+}
+
+.zutatenblock .ZutatenButton{
+    width: 10%;
+    height: 58px;
+    margin-left: 15px;
+    margin-top: 10px;
+    border-radius: 8px;
+    background-color: #2CCE2E;
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    border-color: #2CCE2E;
+}
+
+.zutatenblock .ZutatenButton:hover{
+    background-color: white;
+    color: #2CCE2E;
+    cursor: pointer;
+}
+
+.MinusButton{
+    width: 10%;
+    height: 58px;
+    margin-left: 15px;
+    margin-top: 10px;
+    border-radius: 8px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    border-color: red;
+}
+
+.MinusButton:hover{
+    background-color: white;
+    color: red;
+    cursor: pointer;
+}
+
+
+
 
 .zubereitung{
     height: 300px;
 }
 
-.Zutaten::placeholder{
-    vertical-align: text-top;
-    font-family: 'Poppins';
-}
+
 
 /* FastFood - Page */
 .food-burger-img{
