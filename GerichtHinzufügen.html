@@ -10,6 +10,8 @@
     <!-- styles --> 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/mobile.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>GOOD FOOD MATTERS</title>
 </head>
 <body>
@@ -51,17 +53,37 @@
         <input type="text" class="name" placeholder="Name des Gerichts">
         <select name="Kategorie" id="Kategorie" >
             <option value="FastFood">--Kategorie des Gerichts--</option>
-            <option value="FastFood">Kaloriarme Gerichte</option>
-            <option value="FastFood">Fitness Gerichte</option>
-            <option value="FastFood">Einfache Gerichte</option>
-            <option value="FastFood">Desserts</option>
-            <option value="FastFood">Proteininhaltige Gerichte</option>
-            <option value="FastFood">Vegane Gerichte</option>
-            <option value="FastFood">Vegetarische Gerichte</option>
+            <option value="Kaloriarme Gerichte">Kaloriarme Gerichte</option>
+            <option value="Fitness Gerichte">Fitness Gerichte</option>
+            <option value="Einfache Gerichte">Einfache Gerichte</option>
+            <option value="Desserts">Desserts</option>
+            <option value="Proteininhaltige Gerichte">Proteininhaltige Gerichte</option>
+            <option value="Vegane Gerichte">Vegane Gerichte</option>
+            <option value="Vegetarische Gerichte">Vegetarische Gerichte</option>
             
         </select>
         <input type="text" class="dauer" placeholder="Zubereitungsdauer">
-        <input type="text" class="Zutaten" placeholder="Zutaten">
+        
+        <div class="zutatenblock">
+            <div style="width: 100%; display: flex;">
+                <input type="text" class="Zutaten" placeholder="Zutaten">
+                <input type="text" class="Menge" placeholder="Menge">
+            
+                <select name="Einheit" id="Einheit" class="einheiten">
+                    <option value="--Einheit--">--Einheit--</option>
+                    <option value="g">g</option>
+                    <option value="mg">mg</option>
+                    <option value="kg">kg</option>
+                    <option value="ml">ml</option>
+                    <option value="L">L</option>
+                </select>
+
+                <button class="ZutatenButton">+</button>
+            </div>
+
+        </div>  
+        
+        
         <input type="text" class="zubereitung" placeholder="Zubereitung">
         <br>
         <label for="myfile">Bild hinzufügen: </label>
@@ -85,5 +107,47 @@
         <a href=""><img src="bilder/instagram.png" alt=""></a>
         <a href=""><img src="bilder/twitter.png" alt=""></a>
     </footer>
+
+    <script>
+        
+        $(document).ready(function(){
+            var max_fields  = 50; //Maximum an Zutaten
+            var wrapper     = $(".zutatenblock");
+            var add_button  = $(".ZutatenButton");
+            
+            var x = 1; //Startzahl der Eingabefelder
+
+            $(add_button).click(function(e){
+                e.preventDefault();
+                if(x < max_fields){
+                    x++;
+                    var content = '';
+                    content += '<div style="width: 100%; display: flex;"><input type="text" name="Zutaten" class="Zutaten" placeholder="Zutaten"/><input type="text" name="Menge "class="Menge" placeholder="Menge"/>';
+                    content += '<select name="Einheit" id="Einheit" class="einheiten">'
+                    content += '<option value="--Einheit--">--Einheit--</option>'
+                    content += '<option value="g">g</option>'
+                    content += '<option value="mg">mg</option>'
+                    content += '<option value="kg">kg</option>'
+                    content += '<option value="ml">ml</option>'
+                    content += '<option value="L">L</option>'
+                    content += '</select><button class="MinusButton">-</button></div>'
+                    
+                    $(wrapper).append(content);
+                }
+            });
+        });   
+        
+
+
+
+
+
+
+
+
+    </script>
+
+
+
 </body>
 </html>
