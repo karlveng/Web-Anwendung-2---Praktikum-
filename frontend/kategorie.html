@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <!-- styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    <!-- jquery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Session Handling -->
+    <script src="js/sessionHandling.js"></script>
+    <!-- url Handling -->
+    <script src="js/urlParameter.js"></script>
+    <title>GOOD FOOD MATTERS</title>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="bilder/healthy-eating.png" alt="Logo" class="logo-img">
+                <h1>Good Food Matters</h1>
+            </a>
+        </div>
+        <div class="searchbar">
+            <form action="">
+                <input type="text" placeholder="z.B. Pasta oder Kuchen" name="suche" class="searching">
+            </form>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="GerichtHinzufügen.html" class="add-button">Gericht hinzufügen</a>
+                </li>
+                <li>
+                    <a href="Ueber Uns.html">Über Uns</a>
+                </li>
+                <li>
+                    <a href="kontakt.html">Kontakt</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+
+        <div class="dropdown">
+            <button class="kategorieButton"><img src="bilder/speisekarte.png" alt="menü">Kategorien</button>
+            <div class="dropdown-content">
+                <!-- navigation kategorien -->
+            </div>
+        </div>
+
+        <div class="fastfood-container">
+            <!-- Kategorien Icon -->
+
+            <h2 class="fastfood-überschrift" id="kategorieOutput">
+                <!-- Kategorien Überschrift -->
+            </h2>
+        </div>
+
+        <div class="item-container">
+            <!-- Gerichte der Kategorien -->
+        </div>
+
+
+    </main>
+
+    <script>
+        $(document).ready(function() {
+
+            $.ajax({
+                url: 'http://localhost:8000/wba2api/speisenart/alle',
+                method: 'get',
+                dataType: 'json'
+            }).done(function(response) {
+                console.log(response);
+
+                var tmp = '';
+                var obj;
+                for (i = 0; i < response.daten.length; i++) {
+
+                    obj = response.daten[i];
+                    tmp += '<a href="kategorie.html?speisenartId=' + obj.id + '">' + obj.bezeichnung + '</a>';
+
+                }
+
+
+                $('.dropdown-content').append(tmp);
+
+            }).fail(function(jqXHR, statusText, error) {
+                console.log('Response Code: ' + jqXHR.status + ' - Fehlermeldung: ' + jqXHR.responseText);
+                //unser job
+            });
+
+
+
+
+
+            var speisenartId = 1;
+            if (existsUrlParameter('speisenartId'))
+                speisenartId = getUrlParameterValue('speisenartId');
+
+            console.log('empfangene id: ' + speisenartId);
+
+            // anhand der Zahl den HTML Code erzeugen um die gewünschte Kategorie anzuzeigen
+
+            // anhand der Zahl - speisenartId
+
+            // ajax aufruf an den service der uns die Gerichtdaten der angegebenen Zahl liefert 
+
+            // respsone.daten in den html code einfügen mit einer Variable
+            // html Code erzuegen
+
+            // in die seite einbauen
+            // um diese anzuzeigen
+
+
+            $.ajax({
+                url: 'http://localhost:8000/wba2api/speisenart/gerichteDerKategorie/' + speisenartId,
+                method: 'get',
+                dataType: 'json'
+            }).done(function(response) {
+                console.log(response);
+
+                // ausgabe überschrift speisenart
+                var tmp = '';
+                var obj = response.daten.speisenart
+
+                tmp += '<img src="' + obj.bildpfad + '" alt="fastfood burger" class="food-burger-img"><h2 class="fastfood-überschrift" id="kategorieOutput">' + obj.bezeichnung + '</h2>';
+
+                $('.fastfood-container').append(tmp);
+
+
+                // ausgabe gerichte der speisenart
+                var gerichteArray = response.daten.gerichte;
+                tmp = '';
+
+                for (var i = 0; i < gerichteArray.length; i++) {
+
+                    tmp += '<div class="fastfood-item"><a href="gericht.html?speisenartId=' + response.daten.speisenart.id + '&gerichtId=' + gerichteArray[i].id + '"> <img src="' + gerichteArray[i].bildpfad + '" alt="" style="width: 100%; border-radius: 8px;"> <h6 style="font-family: Poppins; font-size: 16px;">' + gerichteArray[i].bezeichnung + '</h6> <p style="font-size: 15px; font-family: Poppins;">Dauer:' + gerichteArray[i].dauer + 'min</p> </a></div>';
+
+                }
+
+                $('.item-container').append(tmp);
+
+
+            }).fail(function(jqXHR, statusText, error) {
+                console.log('Response Code: ' + jqXHR.status + ' - Fehlermeldung: ' + jqXHR.responseText);
+                var tmp = '<img src="bilder/fehler.png" style="width:100px;"><h1>Irgendetwas ist schief gelaufen....</h1><img src="bilder/fehler.png" style="width:100px;">';
+                $('.item-container').append(tmp);
+            });
+
+            
+
+
+        });
+    </script>
+
+    <footer>
+        <a href="Impressum.html">Impressum</a>
+        <a href="Datenschutz.html">Datenschutz</a>
+        <a href="Nutzungsbedingungen.html">Nutzungsbedingungen</a>
+        <a href=""><img src="bilder/facebook.png" alt=""></a>
+        <a href=""><img src="bilder/instagram.png" alt=""></a>
+        <a href=""><img src="bilder/twitter.png" alt=""></a>
+    </footer>
+
+</body>
+
+</html>

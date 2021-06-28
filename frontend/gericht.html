@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <!-- styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    <!-- jquery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Session Handling -->
+    <script src="js/sessionHandling.js"></script>
+    <!-- url Handling -->
+    <script src="js/urlParameter.js"></script>
+    <title>GOOD FOOD MATTERS</title>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="bilder/healthy-eating.png" alt="Logo" class="logo-img">
+                <h1>Good Food Matters</h1>
+            </a>
+        </div>
+        <div class="searchbar">
+            <form action="Suche.html" method="GET">
+                <input type="text" placeholder="z.B. Pasta oder Kuchen" name="suchbegriff" class="searching">
+            </form>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="GerichtHinzufügen.html" class="add-button">Gericht hinzufügen</a>
+                </li>
+                <li>
+                    <a href="Ueber Uns.html">Über Uns</a>
+                </li>
+                <li>
+                    <a href="kontakt.html">Kontakt</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="dropdown">
+            <button class="kategorieButton"><img src="bilder/speisekarte.png" alt="menü">Kategorien</button>
+            <div class="dropdown-content">
+                <!-- navigation kategorien -->
+            </div>
+        </div>
+
+
+        <div class="gericht-container">
+            <div class="gericht-content">
+                <!--Kategorie Icon einfügen-->
+                <!--Gericht Name einfügen-->
+            </div>
+
+            <div class="left-recept">
+
+                <!--<p>30 g Zwiebeln</p>
+                    <p>50 g Paprikaschoten (grün)</p>
+                    <p>2 g Rote Pepperoni</p>
+                    <p>150 g Hackfleisch (gemischt)</p>
+                    <p>1 EL Semmelbrösel</p>
+                    <p>1 Ei (Größe M) etwas Salz und Pfeffer</p>
+                    <p>1 EL Petersilie (fein geschnitten)</p>
+                    <p>40 g Zwiebeln (rot)</p>
+                    <p>40 g Rucola</p>
+                    <p>75 g Tomaten</p>
+                    <p>2 Hamburgerbrötchen (mit Sesam)</p>-->
+            </div>
+
+            <div class="Zubereitung">
+                <!--<h5>Schritt 1</h5>
+
+                <br> Für den Burger Zwiebel schälen und fein würfeln. Paprikaschote halbieren, Stielansatz, Samen und die weißen Trennwände entfernen, das Fruchtfleisch in kleine Würfel schneiden. Peperoni vom Stielansatz, Samen und Scheidewänden befreien,
+                fein würfeln. Hackfleisch mit Zwiebel, Paprika, Peperoni, Semmelbrösel und Ei in einer Schüssel gut vermengen. Mit Salz, Pfeffer und Petersilie abschmecken. Aus der Hackmasse 4 Burger formen und flach drücken.<br>
+                <br>
+                <h5>Schritt 2</h5>
+                <br> Rucola verlesen, die Stiele entfernen, waschen und gut abtropfen lassen. Tomaten waschen, Stielansatz entfernen und in Scheiben schneiden. Inzwischen die Brötchen halbieren und im Backofen knusprig aufbacken.<br>
+                <br>
+                <h5>Schritt 3</h5>
+                <br> Öl in einer Pfanne erhitzen und die Burger von beiden Seiten etwa 5 Minuten bei mittlerer Hitze braten. Avocado der Länge nach mit einem Messer rings um den Samen einschneiden. Die Hälften mit beiden Händen vorsichtig gegeneinander
+                drehen und eine Hälfte ablösen. Dabei darauf achten, dass die Frucht nicht zerdrückt wird. Den Samen entfernen und das Fruchtfleisch mit Zitronensaft bepinseln. Avocado mit einem Sparschäler vorsichtig schälen, das Fruchtfleisch in kleine
+                Würfel schneiden.<br>
+                <br>
+                <h5>Schritt 4</h5>
+                <br> Die untere Hälfte der Brötchen jeweils mit Barbecuesauce bestreichen, mit Rucola und Avocadowürfeln belegen. Burger mit Käsescheiben darauf anrichten, mit Tomatenscheiben, roten Zwiebelringe belegen. Die oberen Brötchenhälften darauf
+                setzen, eventuell mit Spießchen fixieren und den Burger sofort servieren.-->
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    </main>
+
+    <script>
+        $(document).ready(function() {
+
+            $.ajax({
+                url: 'http://localhost:8000/wba2api/speisenart/alle',
+                method: 'get',
+                dataType: 'json'
+            }).done(function(response) {
+                console.log(response);
+
+                var tmp = '';
+                var obj;
+                for (i = 0; i < response.daten.length; i++) {
+
+                    obj = response.daten[i];
+                    tmp += '<a href="kategorie.html?speisenartId=' + obj.id + '">' + obj.bezeichnung + '</a>';
+
+                }
+
+
+                $('.dropdown-content').append(tmp);
+
+            }).fail(function(jqXHR, statusText, error) {
+                console.log('Response Code: ' + jqXHR.status + ' - Fehlermeldung: ' + jqXHR.responseText);
+                // ihr job
+            });
+
+
+            var speisenartId = 1;
+            if (existsUrlParameter('speisenartId'))
+                speisenartId = getUrlParameterValue('speisenartId');
+
+            var gerichtId = 1;
+            if (existsUrlParameter('gerichtId'))
+                gerichtId = getUrlParameterValue('gerichtId');
+
+            console.log('empfangene ids: ' + speisenartId + ' - ' + gerichtId);
+
+            $.ajax({
+                url: 'http://localhost:8000/wba2api/speisenart/gib/' + speisenartId,
+                method: 'get',
+                dataType: 'json'
+            }).done(function(response) {
+                console.log(response);
+
+                var tmp = ' <img src="' +
+                    response.daten.bildpfad + '" alt="barbecue-burger" class="burger-img">';
+
+                $('.gericht-content').append(tmp);
+
+            }).fail(function(jqXHR, statusText, error) {
+                console.log('Response Code: ' + jqXHR.status + ' - Fehlermeldung: ' + jqXHR.responseText);
+                // ihr job
+            });
+
+
+            $.ajax({
+                url: 'http://localhost:8000/wba2api/gericht/gib/' + gerichtId,
+                method: 'get',
+                dataType: 'json'
+            }).done(function(response) {
+                console.log(response);
+
+                tmp = '<h4>' + response.daten.bezeichnung + '</h4>';
+                $('.gericht-content').append(tmp);
+                tmp = '<img src = "' +
+                    response.daten.bildpfad + '"alt = ""class = "burger-thumb" style="width: 100%">';
+                $('.gericht-content').append(tmp);
+
+                tmp = '<p> Dauer: ' +
+                    response.daten.dauer + ' min </p>';
+                $('.gericht-content').append(tmp);
+
+                var tmp = '<h5>Zutaten</h5>';
+                var zutaten = response.daten.zutatenliste;
+                for (var i = 0; i < zutaten.length; i++) {
+                    tmp += '<p>' + zutaten[i].wert + ' ' + zutaten[i].zutat.bezeichnung + ' ' + zutaten[i].einheit.bezeichnung + '</p>';
+                }
+                $('.left-recept').append(tmp);
+
+
+                var tmp = '';
+                var zubereitungsschritteArray = response.daten.zubereitungsschritte;
+                for (var i = 0; i < zubereitungsschritteArray.length; i++) {
+                    tmp += '<h5>Schritt ' +
+                        zubereitungsschritteArray[i].schritt + '</h5><br >' +
+                        zubereitungsschritteArray[i].anweisung + ' <br><br>';
+                }
+                $('.Zubereitung').append(tmp);
+
+
+            }).fail(function(jqXHR, statusText, error) {
+                console.log('Response Code: ' + jqXHR.status + ' - Fehlermeldung: ' + jqXHR.responseText);
+                var tmp = '<h2>Gericht wurde nicht gefunden...</h2>';
+                $('.gericht-content').append(tmp);
+            });
+
+        });
+    </script>
+
+    <footer>
+        <a href="Impressum.html">Impressum</a>
+        <a href="Datenschutz.html">Datenschutz</a>
+        <a href="Nutzungsbedingungen.html">Nutzungsbedingungen</a>
+        <a href=""><img src="bilder/facebook.png" alt=""></a>
+        <a href=""><img src="bilder/instagram.png" alt=""></a>
+        <a href=""><img src="bilder/twitter.png" alt=""></a>
+    </footer>
+</body>
+
+</html>
+
+</html>

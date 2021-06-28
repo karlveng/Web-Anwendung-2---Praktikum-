@@ -1,0 +1,23 @@
+{
+  "name": "webanw2backend",
+  "version": "2.0.0",
+  "description": "Backend for WebAnwendungen2 SS2021, mit Dateiupload",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "author": "Robert Kuti",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^5.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "jest": "^27.0.5",
+    "lodash": "^4.17.21",
+    "luxon": "^1.26.0",
+    "md5": "^2.3.0",
+    "morgan": "^1.10.0"
+  }
+}

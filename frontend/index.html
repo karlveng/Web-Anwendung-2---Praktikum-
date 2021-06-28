@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+        <!-- styles -->
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/mobile.css">
+        <!-- jquery-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <!-- Session Handling -->
+        <script src="js/sessionHandling.js"></script>
+        <!-- url Handling -->
+        <script src="js/urlParameter.js"></script>
+        <title>GOOD FOOD MATTERS</title>
+    </head>
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="bilder/healthy-eating.png" alt="Logo" class="logo-img">
+                <h1>Good Food Matters</h1>
+            </a>
+        </div>
+        <div class="searchbar">
+            <form action="Suche.html" method="GET">
+                <input type="text" placeholder="z.B. Pasta oder Kuchen" name="suchbegriff" class="searching">
+            </form>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="GerichtHinzufügen.html" class="add-button">Gericht hinzufügen</a>
+                </li>
+                <li>
+                    <a href="Ueber Uns.html">Über Uns</a>
+                </li>
+                <li>
+                    <a href="kontakt.html">Kontakt</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="dropdown">
+            <button class="kategorieButton"><img src="bilder/speisekarte.png" alt="menü">Kategorien</button>
+            
+            <div class="dropdown-content">
+                <!-- navigation kategorien -->
+            </div>
+        </div>
+        <div class="slideshow-container">
+            
+            <div class="bild-container">
+                
+                <div class="mySlidesfade">
+                    
+                    <img src="bilder/pizza-gemuese-fisch.jpg" style="width: 100%">
+                    <div class="text"> 
+                        
+                        <h2>Pizza mit Lachs und Gemüse</h2><br>
+
+                        Diese Pizza ist nicht nur reichlich belegt mit Lachs und Gemüse, 
+                        sondern beinhaltet auch einen saftigen Clou: Der Rand ist mit Mini-Mozzarellas gefüllt!
+                        
+                    </div>
+                    
+                </div>
+                
+                
+                
+
+
+            </div>
+            
+            
+        </div>
+
+        <div class="klassiker-container">
+            <p style="font-family: 'Poppins'; font-size: 30px; font-weight: bold;">Klassiker</p>
+            <div class="klassiker-bilder">
+                <div class="bild">
+                    <img src="bilder/Currywurst-mit-Pommes-Frites-50d790da142a2.jpg" alt="" style="width: 60%; border-radius: 8px;">
+                    <p class="bild-text">Currywurst</p>
+                </div>
+                <div class="bild">
+                    <img src="bilder/pizza-lollies.jpg" alt="" style="width: 60%; border-radius: 8px">
+                    <p class="bild-text">Pizza Lollie</p>
+                </div>
+                <div class="bild">
+                    <img src="bilder/Pizza-Muscheln-50efddaedf9c0.png" alt="" style="width: 60%; border-radius: 8px">
+                    <p class="bild-text">Pizza Muscheln</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <script>
+
+
+        $(document).ready(function () {
+
+            $.ajax({
+                url: 'http://localhost:8000/wba2api/speisenart/alle',
+                method: 'get',
+				dataType: 'json'
+            }).done(function (response) {
+                console.log(response);
+
+                var tmp = '';
+                var obj;
+                for (i = 0; i < response.daten.length; i++) {
+
+                    obj = response.daten[i];
+                    tmp += '<a href="kategorie.html?speisenartId=' + obj.id + '">' + obj.bezeichnung + '</a>';
+
+                }
+                
+                
+                $('.dropdown-content').append(tmp);
+
+            }).fail(function (jqXHR, statusText, error) {
+                console.log('Response Code: ' + jqXHR.status + ' - Fehlermeldung: ' + jqXHR.responseText);
+                // ihr job
+            });
+
+            
+
+        });
+
+
+
+    </script>
+
+
+
+    <footer>
+        <a href="Impressum.html">Impressum</a>
+        <a href="Datenschutz.html">Datenschutz</a>
+        <a href="Nutzungsbedingungen.html">Nutzungsbedingungen</a>
+        <a href=""><img src="bilder/facebook.png" alt=""></a>
+        <a href=""><img src="bilder/instagram.png" alt=""></a>
+        <a href=""><img src="bilder/twitter.png" alt=""></a>
+    </footer>
+</body>
+</html>

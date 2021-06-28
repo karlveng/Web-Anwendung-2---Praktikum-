@@ -1,0 +1,716 @@
+/* Reset Code */
+
+
+/* Setzt die Voreinstellung der Seitenabstände auf 0 */
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: stretch;
+    width: 80%;
+    height: auto;
+    margin: 30px auto;
+}
+
+
+/* order - positioniert die Reihenfolge der Content-Bereiche */
+
+.logo-img {
+    order: 1;
+    width: 85px;
+    list-style: none;
+}
+
+h1 {
+    float: right;
+    line-height: 85px;
+    font-family: 'Caveat';
+    text-transform: uppercase;
+    color: #000000;
+}
+
+
+/* Mitte - Search input */
+
+.searchbar {
+    order: 2;
+}
+
+.searching {
+    padding: 1rem;
+    padding-right: 10rem;
+    width: 100%;
+    border-radius: 8px;
+    text-align: left;
+    outline: none;
+}
+
+
+/* Navbar */
+
+nav {
+    order: 3;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+}
+
+nav ul li {
+    list-style: none;
+    padding: 0rem;
+}
+
+nav ul li a {
+    display: block;
+    text-align: center;
+    font-family: 'Poppins';
+    text-decoration: none;
+    color: #000000;
+    padding: 0.75rem 1rem;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.add-button {
+    background-color: #2CCE2E;
+    border: 1.5px solid #2CCE2E;
+    color: #ffffff;
+    border-radius: 8px;
+    text-decoration: none !important;
+    /* !important setzt die höchste Priorität - überbietet CSS Attribute */
+}
+
+nav ul li .add-button:hover {
+    background-color: white;
+    color: #2CCE2E;
+}
+
+
+/* Main */
+
+main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: stretch;
+    width: 80%;
+    height: auto;
+    margin: 30px auto;
+}
+
+.dropdown {
+    position: absolute;
+    top: 17%;
+    font-family: 'Poppins';
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 15px;
+    font-size: 15px;
+}
+
+.dropdown:hover .kategorieButton {
+    background-color: #E4E7EB;
+    color: black;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content {
+    display: none;
+    background-color: #F2E0D4;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.dropdown-content a:hover {
+    background-color: #2CCE2E;
+    color: white;
+    border-radius: 8px;
+}
+
+.dropdown-content a {
+    text-decoration: none;
+    color: #000;
+}
+
+.kategorieButton {
+    padding: 12px 35px;
+    background-color: transparent;
+    border: none;
+    border: 1.5px solid #000;
+    font-family: 'Poppins';
+    font-size: 16px;
+    border-radius: 8px;
+    outline: none;
+}
+
+.kategorieButton img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+
+/* Slideshow - Container */
+
+.slideshow-container {
+    border-radius: 8px;
+    background-color: #ECD2C2;
+    margin: auto;
+    font-family: 'Poppins';
+    width: 45%;
+}
+
+.mySlidesfade {
+    width: 100%;
+    padding: 12px 20px;
+}
+
+.mySlidesfade img {
+    border-radius: 8px;
+}
+
+.prev,
+.next {
+    font-weight: bold;
+    font-size: 50px;
+    background-color: #E4E7EB;
+    margin: 20px;
+    padding: 0px 10px;
+    border-radius: 8px;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: #CDCED0;
+    cursor: pointer;
+}
+
+.PrevNext {
+    display: flex;
+    justify-content: space-between;
+    border-color: black;
+    width: 100%;
+}
+
+.klassiker-container {
+    padding: 20px;
+    width: 100%;
+    background-color: #E4E7EB;
+    margin-top: 50px;
+    border-radius: 8px;
+}
+
+.klassiker-bilder {
+    display: inline-flex;
+    justify-content: space-between;
+    margin: 30px;
+    border-radius: 8px;
+}
+
+.bild {
+    justify-content: center;
+    text-align: center;
+    margin-top: 0px;
+    margin-right: 30px;
+    background-color: #ECD2C2;
+    padding: 20px;
+    width: 30%;
+    border-radius: 8px;
+}
+
+.bild-text {
+    font-family: 'Poppins';
+}
+
+.text {
+    padding: 12px 20px;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    padding: 30px 10%;
+    font-family: 'Poppins';
+    border-top: solid;
+    border-color: #E4E7EB;
+}
+
+footer a {
+    padding: 12px 20px;
+    color: black;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer a img {
+    width: 40px;
+}
+
+.Überuns-teil {
+    justify-content: center;
+}
+
+.Überuns-container {
+    width: 700px;
+    height: 700px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    background-color: #ECD2C2;
+    font-family: 'Poppins';
+}
+
+.Überuns {
+    border-top: solid;
+    padding: 12px 0px;
+    margin-top: 10px;
+}
+
+.Datenschutz-container {
+    width: 700px;
+    font-family: 'Poppins';
+}
+
+.Datenschutz {
+    padding: 12px 0px;
+    margin-top: 10px;
+    border-top: solid;
+}
+
+.Datenschutz-teil {
+    justify-content: center;
+}
+
+.Impressum {
+    border-top: solid;
+    padding: 12px 0px;
+    margin-top: 10px;
+}
+
+.Impressum-container {
+    width: 700px;
+    font-family: 'Poppins';
+}
+
+.Impressum-teil {
+    justify-content: center;
+}
+
+.list {
+    list-style: none;
+}
+
+.list li {
+    display: inline-block;
+    font-size: 30px;
+    margin: 10px;
+}
+
+.fastfood-überschrift {
+    font-size: 40px;
+}
+
+.fastfood-container {
+    margin: auto;
+    text-align: center;
+    font-family: 'Poppins';
+    width: 100%;
+}
+
+.item-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+    margin: auto;
+}
+
+.fastfood-item {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgba(214, 214, 214, 0.8);
+    border-radius: 8px;
+    font-size: 30px;
+    text-align: center;
+    margin: 20px;
+    width: 200px;
+}
+
+.fastfood-item a {
+    text-decoration: none;
+    color: black;
+}
+
+.fastfood-item a:hover {
+    text-decoration: underline;
+}
+
+
+/* GerichtHinzufügen - Page */
+
+.formular-container {
+    text-align: center;
+    font-family: 'Poppins';
+    font-size: 30px;
+    display: block;
+    width: 40%;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+.add-recept {
+    width: 175px;
+}
+
+.formular-container h4 {
+    text-align: left;
+    font-size: 20px;
+    margin-top: 50px;
+}
+
+.name {
+    width: 100%;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.KategorieContainer {
+    margin-top: 30px;
+    font-size: 15px;
+    border: solid;
+    padding: 10px;
+    border-radius: 8px;
+    border-style: solid;
+    border-width: thin;
+    text-align: left;
+}
+
+
+
+.zutatenblock {
+    width: 100%;
+    display: block;
+    margin-top: 20px;
+}
+
+.zutatenblock .Zutaten {
+    width: 50%;
+    margin-left: 0px;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.zutatenblock .Menge {
+    width: 12%;
+    margin-left: 10px;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+.zutatenblock .einheiten {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.zutatenblock .ZutatenButton {
+    margin-left: 15px;
+    margin-top: 10px;
+    border-radius: 8px;
+    background-color: #186CDF;
+    color: white;
+    border-color: #186CDF;
+    padding: 5px;
+    font-family: 'Poppins';
+}
+
+.zutatenblock .ZutatenButton:hover {
+    background-color: white;
+    color: #186CDF;
+    cursor: pointer;
+}
+
+
+
+.MinusButton {
+    width: 10%;
+    margin-left: 15px;
+    margin-top: 10px;
+    border-radius: 8px;
+    background-color: red;
+    color: white;
+    border-color: red;
+    padding: 5px;
+}
+
+.MinusButton:hover {
+    background-color: white;
+    color: red;
+    cursor: pointer;
+}
+
+.zubereitungsblock {
+    width: 100%;
+    display: block;
+    margin-top: 30px;
+}
+
+.zubereitungsblock .zubereitung {
+    width: 50%;
+    margin-left: 0px;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.zubereitungsblock .ZubereitungsButton {
+    margin-left: 50px;
+    border-radius: 8px;
+    padding: 5px;
+    background-color: #186CDF;
+    color: white;
+    border-color: #186CDF;
+    font-family: 'Poppins';
+    height: 50px;
+}
+
+.zubereitungsblock .ZubereitungsButton:hover {
+    background-color: white;
+    color: #186CDF;
+    cursor: pointer;
+}
+
+.schritte{
+    font-family: 'Inconsolata';
+    font-size: 20px;
+    text-align: left;
+    padding: 20px;
+}
+
+.zutatenListe{
+    font-family: 'Poppins';
+    font-size: 20px;
+    text-align: left;
+    padding: 20px;
+}
+
+
+.BildContainer {
+    font-size: 15px;
+}
+
+.BildContainer input {
+    margin-top: 30px;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 50px;
+    font-size: 20px;
+    background-color: #2CCE2E;
+    color: white;
+    border-radius: 8px;
+    border-color: #2CCE2E;
+}
+
+.submit-button:hover {
+    background-color: white;
+    color: #2CCE2E;
+    cursor: pointer;
+}
+
+
+/* FastFood - Page */
+
+.food-burger-img {
+    width: 175px;
+}
+
+
+/* Barbecue Burger */
+
+.gericht-container {
+    display: flex;
+    
+    width: 100%;
+    flex-wrap: wrap;
+    height: auto;
+    margin-left: 300px;
+    align-items: center;
+}
+
+.gericht-content {
+  width: 50%;
+}
+
+.burger-img {
+    width: 65px;
+    float: left;
+}
+
+.gericht-content h4 {
+    float: left;
+    line-height: 65px;
+    font-family: 'Poppins';
+    margin-left: 30px;
+    font-size: 30px;
+}
+
+.gericht-content p {
+    font-family: 'Poppins';
+    font-size: 25px;
+}
+
+.burger-thumb {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.push {
+    width: 15rem;
+}
+
+.left-recept {
+    order: 1;
+    font-family: 'Poppins';
+    line-height: 45px;
+    background-color: #F2F2F2;
+    border-radius: 8px;
+    padding: 10px 10px;
+    height: 30.2rem;
+    overflow: auto;
+    margin-left: 100px;
+}
+
+.left-recept h5 {
+    font-size: 30px;
+    font-family: 'Lobster';
+    color: #2CCE2E;
+}
+
+.Zubereitung {
+    order: 2;
+    margin-top: 50px;
+    width: 600px;
+    font-family: 'Poppins';
+}
+
+.Zubereitung h5 {
+    font-size: 30px;
+    font-family: 'Lobster';
+    color: #2CCE2E;
+}
+
+
+/* Impressum - Page */
+
+.Impressum {
+    border-top: solid;
+    padding: 12px 0px;
+    margin-top: 10px;
+}
+
+.impressum-container {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    font-family: 'Poppins';
+}
+
+
+/* Datenschutz - Page */
+
+.datenschutz-container {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    font-family: 'Poppins';
+}
+
+
+/* Kontakt - Page */
+
+.Überuns-container {
+    display: block;
+    margin: 0 auto;
+}
+
+.Erfolgsmeldung {
+    font-family: 'Poppins';
+    font-weight: bold;
+    color: green;
+    margin: 20px 0 20px 0;
+}
+
+/* Allgemeine Styles */
+.Fehlermeldung {
+    font-family: 'Poppins';
+    font-weight: bold;
+    color: red;
+    margin: 20px 0 20px 0;
+}
+
+/* Suche.html Styles */
+.suchergebnisUeberschrift{
+    width: 100%;
+    font-family: 'Poppins';
+}
+
+.suchergebnisUeberschrift h2{
+    text-align: center;
+}
+
+.ergebnisse {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+    margin: auto;
+}
+
+.ergebnis-item{
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgba(214, 214, 214, 0.8);
+    border-radius: 8px;
+    font-size: 30px;
+    text-align: center;
+    margin: 20px;
+    width: 200px;
+}
+
+.ergebnis-item a {
+    text-decoration: none;
+    color: black;
+}
+
+.ergebnis-item a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+
+

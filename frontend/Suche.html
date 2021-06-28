@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="de">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+        <!-- styles -->
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/mobile.css">
+        <!-- jquery-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <!-- Session Handling -->
+        <script src="js/sessionHandling.js"></script>
+        <!-- url Handling -->
+        <script src="js/urlParameter.js"></script>
+        <title>GOOD FOOD MATTERS</title>
+    </head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="bilder/healthy-eating.png" alt="Logo" class="logo-img">
+                <h1>Good Food Matters</h1>
+            </a>
+        </div>
+        <div class="searchbar">
+            <form action="Suche.html" method="GET">
+                <input type="text" placeholder="z.B. Pasta oder Kuchen" name="suchbegriff" class="searching">
+            </form>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="GerichtHinzufügen.html" class="add-button">Gericht hinzufügen</a>
+                </li>
+                <li>
+                    <a href="Ueber Uns.html">Über Uns</a>
+                </li>
+                <li>
+                    <a href="kontakt.html">Kontakt</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="suchergebnisUeberschrift" class="suchergebnisUeberschrift">
+            <!-- hier wird die Überschrift oder Fehlermeldungen angezeigt -->
+
+        </div>
+        
+        <div class="ergebnisse" id="suchergebnisse">
+            <!-- hier werden die Suchergebnisse oder Fehlermeldungen angezeigt -->
+        </div>
+        
+
+    </main>
+    <footer>
+        <a href="Impressum.html">Impressum</a>
+        <a href="Datenschutz.html">Datenschutz</a>
+        <a href="Nutzungsbedingungen.html">Nutzungsbedingungen</a>
+        <a href=""><img src="bilder/facebook.png" alt=""></a>
+        <a href=""><img src="bilder/instagram.png" alt=""></a>
+        <a href=""><img src="bilder/twitter.png" alt=""></a>
+    </footer>
+
+    <script>
+
+    
+
+        $(document).ready(function() {
+            
+            // suchbegriff vorinialisieren mit leerem Suchbegriff
+            var suchbegriff = '';
+
+            // prüfen ob ein Suchbegriff empfangen wurde
+            if (existsUrlParameter('suchbegriff'))
+                suchbegriff = getUrlParameterValue('suchbegriff');  // falls ja, aus Adresszeile übernehmen
+
+            console.log('empfangene : ' + suchbegriff);
+
+            // unnötige leerzstellen entfernen
+            suchbegriff = $.trim(suchbegriff);
+
+            // prüfen, ob suchbegrif angegeben, falls nicht Fehlermeldung zeigen
+            if (suchbegriff.length == 0) {
+                $('#suchergebnisse').html('<p class="Fehlermeldung"> Bitte geben Sie einen Suchbegriff ein.</p>');
+                return;
+            }
+
+            // ansonsten suchbegriff an service senden
+            // ergebnis empfangen und anzeigen lassen
+            $.ajax({
+            url: 'http://localhost:8000/wba2api/gericht/suche/'+ suchbegriff,
+            method: 'get',
+            dataType: 'json'
+            }).done(function(response) {
+                console.log(response);
+
+                var suchergebnisse = response.daten;
+                
+
+                // falls kein suchergebnis erhalten, meldung zeigen
+                if (suchergebnisse.length == 0) {
+                    $('#suchergebnisse').html('<b style="color:red"> Ihr Suchbegriff ' + suchbegriff + ' ergab keine Treffer.</b>');
+                } else {
+                    // TODO suchergebnisse zum dynamischen html erzeugen und im div suchergebnisse ausgeben
+                    // Überschrift mit der Anzahl der gefunden Gerichten dynamisch erzeugen
+                    
+                    var ueberschrift = '<h2>Ihre Suche ergab '+ suchergebnisse.length +' Treffer.</h2>';
+                    console.log(ueberschrift);
+
+                    $('.suchergebnisUeberschrift').append(ueberschrift);
+
+                    var tmp = '';
+
+                    for (var i = 0; i < suchergebnisse.length; i++) {
+
+                        tmp += '<div class="ergebnis-item">'
+                        tmp += '<a href="gericht.html?gerichtId='+suchergebnisse[i].id+'">'
+                        tmp += '<img src="' + suchergebnisse[i].bildpfad + '" alt="" style="width: 100%; border-radius: 8px;">'
+                        tmp += '<h6 style="font-family: Poppins; font-size: 16px;">' + suchergebnisse[i].bezeichnung + '</h6>'
+                        tmp += '<p style="font-size: 15px; font-family: Poppins;">Dauer:' + suchergebnisse[i].dauer + 'min</p></a>'        
+                        tmp += '</div>';    
+                    
+
+                    }
+
+                    $('.ergebnisse').append(tmp);
+
+
+
+
+                }
+
+            }).fail(function(jqXHR, statusText, error) {
+                console.log('Response Code: ' + jqXHR.status + ' - Fehlermeldung: ' + jqXHR.responseText);
+                $('#suchergebnisse').html('<p class="Fehlermeldung"> Die Suche produzierte Fehler: ' + jqXHR.responseText + '</p>');
+            });
+
+
+            
+
+
+
+
+
+            
+            
+
+        }); // end document rady
+
+        
+
+        
+
+    </script>
+
+
+
+</body>
+
+</html>

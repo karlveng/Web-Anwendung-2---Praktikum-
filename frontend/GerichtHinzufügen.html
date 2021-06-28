@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="de">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Caveat" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+        <!-- styles -->
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/mobile.css">
+        <!-- jquery-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <!-- Session Handling -->
+        <script src="js/sessionHandling.js"></script>
+        <!-- url Handling -->
+        <script src="js/urlParameter.js"></script>
+        <title>GOOD FOOD MATTERS</title>
+    </head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="bilder/healthy-eating.png" alt="Logo" class="logo-img">
+                <h1>Good Food Matters</h1>
+            </a>
+        </div>
+        <div class="searchbar">
+            <form action="Suche.html" method="GET">
+                <input type="text" placeholder="z.B. Pasta oder Kuchen" name="suchbegriff" class="searching">
+            </form>
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="GerichtHinzufügen.html" class="add-button">Gericht hinzufügen</a>
+                </li>
+                <li>
+                    <a href="Ueber Uns.html">Über Uns</a>
+                </li>
+                <li>
+                    <a href="kontakt.html">Kontakt</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="formular-container">
+
+            <img src="bilder/kochmutze.png" alt="kochmuetze" class="add-recept">
+            <h2>Neues Gericht</h2>
+            <form enctype="multipart/form-data" class="formular-content" id="gerichtFormular"> 
+                
+                <h4>Name des Gerichts</h4>
+                <input type="text" class="name" placeholder="Name eingeben" id="addGerichtName">
+
+                <h4>Dauer des Gerichts</h4>
+                <input type="text" class="name" placeholder="Dauer in min eingeben" id="addGerichtDauer">
+
+                <h4>Kategorie des Gerichts</h4>
+                <div class="KategorieContainer"></div>
+
+
+                <h4>Zutaten des Gerichts</h4>
+                <div class="zutatenblock">
+                    <div style="width: 100%; display: flex;">
+                        <select id="ZutatenListe" class="Zutaten" placeholder="Zutat eingeben">
+                        </select>
+                        <input type="text" class="Menge" id="MengenAngabe" placeholder="Menge">
+                        <select id="EinheitenListe" class="einheiten">
+                        </select>
+
+                        <button type="button" class="ZutatenButton">Zutat hinzufügen</button>
+                    </div>
+                    <table id="selektierteZutaten" style="width:100%" class="zutatenListe"></table>
+
+                </div>
+
+
+                <h4>Zubereitung des Gerichts</h4>
+                <div class="zubereitungsblock">
+                    <div style="width: 100%; display: flex;">
+                        <textarea id="ZubereitungsText" type="text" class="zubereitung" placeholder="Schritt eingeben" rows="10"></textarea>
+
+                        <button type="button" class="ZubereitungsButton">Schritt hinzufügen</button>
+
+                    </div>
+                    <div id="eingegebeneSchritte" style="width: 100%"></div>
+                </div>
+
+                <h4>Bilder des Gerichts</h4>
+                <div class="BildContainer">
+
+                    <input type="file" id="bild" name="bild" placeholder="max. Größe 30 MB">
+                    <label for="myFile">max. Größe 30 MB</label>
+                </div>
+
+                <input type="submit" value="Hinzufügen" class="submit-button" id="addGericht">
+            </form>
+            <div id="meldungen"></div>
+        </div>
+
+    </main>
+    <footer>
+        <a href="Impressum.html">Impressum</a>
+        <a href="Datenschutz.html">Datenschutz</a>
+        <a href="Nutzungsbedingungen.html">Nutzungsbedingungen</a>
+        <a href=""><img src="bilder/facebook.png" alt=""></a>
+        <a href=""><img src="bilder/instagram.png" alt=""></a>
+        <a href=""><img src="bilder/twitter.png" alt=""></a>
+    </footer>
+
+    <script>
+
+        var zutatenliste = [];
+        var zubereitungsliste = [];
+
+        $(document).ready(function() {
+
+            
+
+            $('#gerichtFormular').submit(function(event) {
+                // Verlassen der Seite verhindern
+                event.preventDefault();
+
+                // daten aus formular holen und trimmen
+                var name = $.trim($('#addGerichtName').val());
+                var dauer = $.trim($('#addGerichtDauer').val());
+
+                //Prüfen
+                // Falls etwas fehlt Fehlermeldung return
+
+                if(name.length == 0) {
+                    $('#meldungen').html('<p class="Fehlermeldung">Bitte geben Sie einen Namen ein</p>');
+                    return;
+                }
+
+                if (dauer.length == 0) {
+                    $('#meldungen').html('<p class="Fehlermeldung">Bitte geben Sie eine Dauer ein</p>');
+                    return;
+                }
+                
+                // text zahl zu int konvertieren
+                dauer = parseInt(dauer);
+
+                if (isNaN(dauer)) {
+                    $('#meldungen').html('<p class="Fehlermeldung">Bitte geben Sie eine Dauer in Minuten ein</p>');
+                    return;
+                }
+
+                if (dauer <= 0) {
+                    $('#meldungen').html('<p class="Fehlermeldung">Bitte geben Sie eine positive Dauer ein</p>');
+                    return;
+                }
+                
+                var speisenartIds = []; // initialize empty array 
+                $('.speisenart:checked').each(function(){
+                    speisenartIds.push($(this).val());
+                });
+
+                if (speisenartIds.length == 0) {
+                    $('#meldungen').html('<p class="Fehlermeldung">Bitte wählen Sie mindestens eine Kategorie aus</p>');
+                    return;
+                }
+
+                if (zutatenliste.length == 0) {
+                    $('#meldungen').html('<p class="Fehlermeldung">Bitte geben Sie wenigstens eine Zutat an</p>');
+                    return;
+                }
+
+                if (zubereitungsliste.length == 0) {
+                    $('#meldungen').html('<p class="Fehlermeldung">Bitte geben Sie wenigstens einen Zubereitungsschritt an</p>');
+                    return;
+                }
+
+                if ($('#bild').val().length == 0) {
+                    $('#meldungen').html('<p class="Fehlermeldung">Bitte wählen Sie ein Bild aus</p>');
+                    return;
+                }
+                
+                // Daten richtig, wir können übernehmen Eingetippte Daten
+                var daten = { 
+                    'name': name,
+                    'dauer': dauer,
+                    'speisenarten': speisenartIds,
+                    'zutaten': zutatenliste,
+                    'zubereitungsschritte': zubereitungsliste
+                };
+
+                console.log(daten);
+
+                // Formulardaten (Eingetippte Daten + Bild)
+                var alles = new FormData(this);
+
+
+                // Zusammenführen von "daten" und "alles", "daten" werden erst in Strings umgewandelt weil HTTP
+                alles.append('eingetippt', JSON.stringify(daten));
+               
+                $.ajax({
+                    url: 'http://localhost:8000/wba2api/gericht', 
+                    type: 'post',
+                    data: alles, 
+                    dataType: 'json',
+                    contentType: false,
+                    cache: false,
+                    processData: false
+                }).done(function(response) {
+                    console.log(response);
+                    $('#meldungen').html('<p class="Erfolgsmeldung">' + response.daten + '</p>');
+                    
+                    // formular zurücksetzen
+                    $('#addGerichtName').val('');
+                    $('#addGerichtDauer').val('');
+                    $('input:checkbox').removeAttr('checked');
+                    zutatenliste = [];
+                    zutatenlisteAusgeben();
+                    zubereitungsliste = [];
+                    zubereitungslisteAusgeben();
+                    $('#bild').val('');
+
+                }).fail(function(jqXHR, statusText, error) {
+                    console.log('Response Code: ' + jqXHR.status + ' - Fehlermeldung: ' + jqXHR.responseText);
+                    $('#meldungen').html('<p class="Fehlermeldung">' + jqXHR.responseText + '</p>');
+                });
+            
+            }); // end addgericht
+
+
+
+
+            // Kategorieauswahl dynamisiert
+            $.ajax({
+                url: 'http://localhost:8000/wba2api/speisenart/alle',
+                method: 'get',
+                dataType: 'json'
+            }).done(function(response) {
+                console.log(response);
+
+                var tmp = '';
+                var obj;
+                for (var i = 0; i < response.daten.length; i++) {
+                        obj = response.daten[i];
+                        tmp += obj.bezeichnung +' <input class = "speisenart" type = "checkbox" name="speisenart" value ="'+obj.id+'"><br>';
+                }
+
+                $('.KategorieContainer').append(tmp);
+
+                
+
+                console.log();
+
+            }).fail(function(jqXHR, statusText, error) {
+                console.log('Response Code: ' + jqXHR.status + ' - Fehlermeldung: ' + jqXHR.responseText);
+                // ihr job
+            });
+            
+            // Auswahl für Einheiten dynamisiert
+            $.ajax({
+                url: 'http://localhost:8000/wba2api/einheit/alle',
+                method: 'get',
+                dataType: 'json'
+            }).done(function(response) {
+                console.log(response.daten);
+                for (i = 0; i < response.daten.length; i++) {
+                    $('#EinheitenListe').append($('<option>').text(response.daten[i].bezeichnung).val(response.daten[i].id));
+                }
+            }).fail(function(jqXHR, statusText, error) {
+                console.log('Response Code: ' + jqXHR.status + ' - Fehlermeldung: ' + jqXHR.responseText);
+                // ihr job
+            });
+
+            // Auswahl der Zutaten dynamisiert
+            $.ajax({
+                url: 'http://localhost:8000/wba2api/Zutat/alle',
+                method: 'get',
+                dataType: 'json'
+            }).done(function(response) {
+                console.log(response.daten);
+                for (i = 0; i < response.daten.length; i++) {
+                    $('#ZutatenListe').append($('<option>').text(response.daten[i].bezeichnung).val(response.daten[i].id));
+                }
+
+            }).fail(function(jqXHR, statusText, error) {
+                console.log('Response Code: ' + jqXHR.status + ' - Fehlermeldung: ' + jqXHR.responseText);
+                // ihr job
+            });
+
+            // definierte Zutat des users merken
+            $('.ZutatenButton').click(function() {
+
+                // wurde was eingetippt im mengenfeld?
+                var menge = $('#MengenAngabe').val();
+                if (menge.length == 0) 
+                    return;
+
+                // daten aus dem formular holen
+                var zutat = $('#ZutatenListe option:selected').text();
+                var zutatenId = $('#ZutatenListe option:selected').val();
+                var einheit = $('#EinheitenListe option:selected').text();
+                var einheitenId = $('#EinheitenListe option:selected').val();
+
+                // gewählte kombi als neues json objekt im array zwischenspeichern
+                zutatenliste.push({"menge": menge, "zutat": zutat, "zutatenId": zutatenId, "einheit": einheit, "einheitenId": einheitenId});
+                
+                // zutatenliste ausgeben
+                zutatenlisteAusgeben();
+
+                // formular zurück setzen
+                $('#ZutatenListe option:selected').prop("selected", false);
+                $('#ZutatenListe option:first').prop("selected", true);
+                $('#MengenAngabe').val('');
+                $('#EinheitenListe option:selected').prop("selected", false);
+                $('#EinheitenListe option:first').prop("selected", true);
+            });
+
+            $('.ZubereitungsButton').click(function(){
+
+                // Text aus dem Formular holen
+                var text = $('#ZubereitungsText').val();
+                // Prüfen ob Eingabefeld leer ist
+                if (text.length == 0)
+                    return;
+
+                // eingebenen Text als json objekt im array zwischenspeichern
+                zubereitungsliste.push({"schritt": text});
+
+                //console.log(zubereitungsliste);
+
+                // Zubereitungsschritte ausgeben
+                zubereitungslisteAusgeben();
+
+                // Formular zurücksetzen
+                $('#ZubereitungsText').val('');
+
+            })
+
+
+        }); // end document rady
+
+        function zutatenlisteAusgeben() {
+            // tabelleninhalt löschen
+            $('#selektierteZutaten').empty();
+
+            // falls es zutaten gibt, diese ausgeben
+            if (zutatenliste.length > 0) {
+
+                var tmp = '';
+
+                for (i = 0; i < zutatenliste.length; i++) {
+                    tmp += '<tr>';
+                    tmp += '<td>' + (i+1) + '.</td>';
+                    tmp += '<td>' + zutatenliste[i].menge +' '+zutatenliste[i].einheit + '</td>';
+                    tmp += '<td>' + zutatenliste[i].zutat + '</td>';
+                    tmp += '<td><button type="button" onClick="zutatEntfernen(' + i + ')" style="background-color: red; color: white; padding: 10px; border-radius: 8px; "">Entfernen</button></td>';
+                    tmp += '</tr>';
+                }
+
+                $('#selektierteZutaten').append(tmp);
+            }
+        }
+
+        function zutatEntfernen(idx) {
+            // arrayelement an position idx löschen
+            zutatenliste.splice(idx, 1);
+            // neu ausgeben
+            zutatenlisteAusgeben();
+        }
+
+        function zubereitungslisteAusgeben() {
+            // tebelleninhalt löschen
+            $('#eingegebeneSchritte').empty();
+
+            // falls es text gibt, diese ausgeben
+            if (zubereitungsliste.length > 0) {
+                var tmp = '';
+
+                for (i = 0; i < zubereitungsliste.length; i++){
+
+                    tmp += '<p class="schritte">Schritt ' + (i+1) +'<br>' +zubereitungsliste[i].schritt+ '</p>';
+                    tmp += '<button type="button" onClick="schrittEntfernen(' + i + ')" style="background-color: red; color: white; padding: 10px; border-radius: 8px;">Entfernen</button><br>'
+                }
+
+                $('#eingegebeneSchritte').append(tmp);
+
+
+
+            }
+
+        }
+
+        function schrittEntfernen(idx) {
+            // arrayelement an position idx löschen
+            zubereitungsliste.splice(idx, 1);
+            // neu ausgeben
+            zubereitungslisteAusgeben();
+        }
+
+        
+
+    </script>
+
+
+
+</body>
+
+</html>
